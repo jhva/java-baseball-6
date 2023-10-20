@@ -13,9 +13,13 @@ public class MessageUtils {
     public static final String COMMON_MATCHES_MSG = "%d볼 %d스트라이크";
 
 
-    public static final int USER_INPUT_THREE_SIZE = 3;
+    public static final int CHECK_STRIKE_MAX = 3;
     public static final int CHECK_STRIKE_MIN = 1;
     public static final int CHECK_BALL_MIN = 1;
+    public static final int USER_SCORE_BALL_FIX_INDEX = 0;
+    public static final int USER_SCORE_STRIKE_FIX_INDEX = 1;
+
+    public static final int NOTHING_BALL = 0;
 
     public static void commonFormatter(int[] userScore) {
         int ball = userScore[0];
@@ -43,21 +47,23 @@ public class MessageUtils {
     ;
 
     public static void ballFormatter(int ball) {
-        String formatterBallMsg = splitterCommonMsg(ball, 0);
+        String formatterBallMsg = splitterCommonMsg(ball, USER_SCORE_BALL_FIX_INDEX);
         if (ball >= CHECK_BALL_MIN) {
             System.out.println(formatterBallMsg);
         }
     }
 
     public static void strikeFormatter(int strike) {
-        String formatterBallMsg = splitterCommonMsg(strike, 1);
-        if (strike >= CHECK_STRIKE_MIN) {
-            System.out.print(formatterBallMsg);
+        String formatterStrikeMsg = splitterCommonMsg(strike, USER_SCORE_STRIKE_FIX_INDEX);
+        if (strike == CHECK_STRIKE_MIN) {
+            System.out.print(formatterStrikeMsg);
+        }
+        if (strike == CHECK_STRIKE_MAX) {
         }
     }
 
     public static void validateNothingBall(int[] userScores) {
-        if (Arrays.stream(userScores).allMatch(score -> score == 0)) {
+        if (Arrays.stream(userScores).allMatch(score -> score == NOTHING_BALL)) {
             System.out.println(NOTHING_BASEBALL);
         }
     }
