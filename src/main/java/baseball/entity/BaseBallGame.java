@@ -3,7 +3,8 @@ package baseball.entity;
 public class BaseBallGame extends Computer {
 
 
-    public void start() {
+    public void start(InputView view) {
+
     }
 
     public void stop() {
