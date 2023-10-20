@@ -1,13 +1,16 @@
 package baseball.entity;
 
+import baseball.utils.MessageUtils;
+
 public class BaseBallGame extends Computer {
 
 
-    public void start(InputView view) {
+    public void start(InputView inputView) {
         while (true) {
             randomGenerator();
-            view.printFromUserView();
-            int[] s = userMatchesComputerRandom(view.printToInputView());
+            inputView.printFromUserView();
+            int[] s = userMatchesComputerRandom(inputView.printToInputView());
+            MessageUtils.commonFormatter(s);
         }
     }
 
