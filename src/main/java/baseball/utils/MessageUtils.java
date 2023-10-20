@@ -35,19 +35,24 @@ public class MessageUtils {
 
     }
 
-    public static void ballFormatter(int ball) {
+    public static String splitterCommonMsg(int values, int userScoreCheckIndex) {
         String[] formatSplit = COMMON_MATCHES_MSG.split(" ");
-        String formatterBallMsg = String.format(formatSplit[0], ball);
+        return String.format(formatSplit[userScoreCheckIndex], values);
+    }
+
+    ;
+
+    public static void ballFormatter(int ball) {
+        String formatterBallMsg = splitterCommonMsg(ball, 0);
         if (ball >= CHECK_BALL_MIN) {
             System.out.println(formatterBallMsg);
         }
     }
 
     public static void strikeFormatter(int strike) {
-        String[] formatSplit = COMMON_MATCHES_MSG.split(" ");
-        String formatterStrikeMsg = String.format(formatSplit[1], strike);
+        String formatterBallMsg = splitterCommonMsg(strike, 1);
         if (strike >= CHECK_STRIKE_MIN) {
-            System.out.print(formatterStrikeMsg);
+            System.out.print(formatterBallMsg);
         }
     }
 
