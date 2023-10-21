@@ -1,5 +1,9 @@
 package baseball.entity;
 
+import static baseball.utils.MessageUtils.RANDOM_RANGE_FINAL_NUMBER;
+import static baseball.utils.MessageUtils.RANDOM_RANGE_START_NUMBER;
+import static baseball.utils.MessageUtils.RANDOM_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,54 +12,53 @@ public class Computer {
 
     public List<Integer> generateRandomComputerValue;
 
-    public void randomGenerator() {
+    protected void randomGenerator() {
 
         generateRandomComputerValue = new ArrayList<>();
 
-        while (generateRandomComputerValue.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (generateRandomComputerValue.size() < RANDOM_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_RANGE_START_NUMBER, RANDOM_RANGE_FINAL_NUMBER);
             findDuplicatesRandomValue(randomNumber);
         }
     }
 
-    public void findDuplicatesRandomValue(int randomNumber) {
+    protected void findDuplicatesRandomValue(int randomNumber) {
         if (!generateRandomComputerValue.contains(randomNumber)) {
             generateRandomComputerValue.add(randomNumber);
         }
     }
 
-    public int[] userMatchesComputerRandom(List<Integer> userInputValues) {
+    protected int[] userMatchesComputerRandom(List<Integer> userInputValues) {
         int ball = 0;
         int strike = 0;
-        int userInputValuesLen = userInputValues.size();
-
-        for (int i = 0; i < userInputValuesLen; i++) {
+        int userInputSize = userInputValues.size();
+        for (int i = 0; i < userInputSize; i++) {
             int userInputValue = userInputValues.get(i);
-            ball = countUserValueInComputerRandomBall(userInputValue);
-            strike = countUserValueInComputerRandomStrike(i, userInputValue);
+            int computerValue = generateRandomComputerValue.get(i);
+            strike += countUserValueInComputerRandomStrike(computerValue, userInputValue);
+            ball += countUserValueInComputerRandomBall(userInputValue, userInputSize, i);
         }
         return new int[]{ball, strike};
     }
 
-
-    public int countUserValueInComputerRandomBall(int userInputValue) {
+    private int countUserValueInComputerRandomBall(int userInputValue, int len, int i) {
         int ball = 0;
-        if (hasUserValueInComputerValue(userInputValue)) {
-            ball++;
+        for (int j = i + 1; j < len; j++) {
+            int computerValue = generateRandomComputerValue.get(j);
+            if (userInputValue == computerValue) {
+                ball++;
+            }
         }
+
         return ball;
     }
 
-    public boolean hasUserValueInComputerValue(int userInputValue) {
-        return generateRandomComputerValue.contains(userInputValue);
-    }
-
-    public int countUserValueInComputerRandomStrike(int idx, int userInputValue) {
+    private int countUserValueInComputerRandomStrike(int computerValue, int userInputValue) {
         int strike = 0;
-        Integer computerValue = generateRandomComputerValue.get(idx);
-        if (computerValue.equals(userInputValue)) {
+        if (computerValue == userInputValue) {
             strike++;
         }
         return strike;
     }
 }
+
