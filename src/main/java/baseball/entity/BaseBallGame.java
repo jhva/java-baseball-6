@@ -1,22 +1,26 @@
 package baseball.entity;
 
-import static baseball.utils.MessageUtils.CHECK_GAME_EXIT_NUMBER;
-import static baseball.utils.MessageUtils.CHECK_STRIKE_MAX;
 import static baseball.utils.MessageUtils.GAME_START;
 
 import baseball.utils.MessageUtils;
 import java.util.Objects;
 
-public class BaseBallGame extends Computer {
+public class BaseBallGame {
 
-    private static boolean hasGame = true;
+    private boolean hasGame = true;
+    private final Computer computer;
+
+    public BaseBallGame() {
+        this.computer = new Computer();
+    }
+
 
     public void start(InputView inputView) {
         System.out.println(GAME_START);
-        randomGenerator();
+        computer.randomGenerator();
         while (hasGame) {
             inputView.printFromUserView();
-            int[] userScore = userMatchesComputerRandom(inputView.printToInputView());
+            int[] userScore = computer.userMatchesComputerRandom(inputView.printToInputView());
             int strike = userScore[1];
             MessageUtils.commonFormatter(userScore);
             checkForStrike(inputView, strike);
@@ -24,7 +28,7 @@ public class BaseBallGame extends Computer {
     }
 
     public void checkForStrike(InputView inputView, int strike) {
-        if (strike == CHECK_STRIKE_MAX) {
+        if (strike == MessageUtils.CHECK_STRIKE_MAX) {
             boolean hasThreeStrike = MessageUtils.hasCurrentThreeStrike(strike);
             stop(inputView, hasThreeStrike);
         }
@@ -38,7 +42,7 @@ public class BaseBallGame extends Computer {
 
 
     public void validateGameControllerValue(String userInput1or2) {
-        if (Objects.equals(userInput1or2, CHECK_GAME_EXIT_NUMBER)) {
+        if (Objects.equals(userInput1or2, MessageUtils.CHECK_GAME_EXIT_NUMBER)) {
             hasGame = false;
         }
         reset();
@@ -46,7 +50,7 @@ public class BaseBallGame extends Computer {
 
     public void reset() {
         if (hasGame) {
-            randomGenerator();
+            computer.randomGenerator();
         }
     }
 }
