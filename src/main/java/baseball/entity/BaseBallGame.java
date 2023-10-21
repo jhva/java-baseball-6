@@ -40,9 +40,13 @@ public class BaseBallGame extends Computer {
     public void validateGameControllerValue(String userInput1or2) {
         if (Objects.equals(userInput1or2, CHECK_GAME_EXIT_NUMBER)) {
             hasGame = false;
-        } else {
+        }
+        reset();
+    }
+
+    public void reset() {
+        if (hasGame) {
             randomGenerator();
-            
         }
     }
 }
