@@ -10,9 +10,9 @@ import java.util.List;
 
 public class Computer {
 
-    public List<Integer> generateRandomComputerValue;
+    private List<Integer> generateRandomComputerValue;
 
-    protected void randomGenerator() {
+    public void randomGenerator() {
 
         generateRandomComputerValue = new ArrayList<>();
 
@@ -22,13 +22,13 @@ public class Computer {
         }
     }
 
-    protected void findDuplicatesRandomValue(int randomNumber) {
+    public void findDuplicatesRandomValue(int randomNumber) {
         if (!generateRandomComputerValue.contains(randomNumber)) {
             generateRandomComputerValue.add(randomNumber);
         }
     }
 
-    protected int[] userMatchesComputerRandom(List<Integer> userInputValues) {
+    public int[] userMatchesComputerRandom(List<Integer> userInputValues) {
         int ball = 0;
         int strike = 0;
         int userInputSize = userInputValues.size();
