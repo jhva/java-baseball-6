@@ -26,7 +26,7 @@ public class MessageUtils {
     public static void commonFormatter(int[] userScore) {
         int ball = userScore[0];
         int strike = userScore[1];
-        validateNothingBall(userScore);
+        validateNothingBall(ball, strike);
         allMatcherFromUserScoreSizeOne(ball, strike);
         ballFormatter(ball, strike);
         strikeFormatter(strike, ball);
@@ -68,8 +68,8 @@ public class MessageUtils {
         return current;
     }
 
-    public static void validateNothingBall(int[] userScores) {
-        if (userScores[0] == NOTHING_BALL && userScores[1] == NOTHING_BALL) {
+    public static void validateNothingBall(int ball, int strike) {
+        if (ball == NOTHING_BALL && strike == NOTHING_BALL) {
             System.out.println(NOTHING_BASEBALL);
         }
     }
