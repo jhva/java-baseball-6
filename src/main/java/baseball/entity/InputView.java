@@ -12,20 +12,28 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 public class InputView {
 
+    private StringTokenizer st;
 
     public void printFromUserView() {
         System.out.print(PLEASE_ASK_NUMBER);
     }
 
+    public String trimRemoveConsoleReadLine() {
+        st = new StringTokenizer(Console.readLine(), " ");
+        return st.nextToken();
+    }
+
     public String printGameContinueFromUserInput() {
-        return Console.readLine();
+        return trimRemoveConsoleReadLine();
     }
 
     public List<Integer> printToInputView() {
-        String userInputOnlyNumber = isUserInputNumeric(Console.readLine());
+
+        String userInputOnlyNumber = isUserInputNumeric(trimRemoveConsoleReadLine());
         checkUserInputSize(userInputOnlyNumber.length());
         String[] userInputValues = userInputOnlyNumber.split("");
         return checkDuplicatesAndReturnList(userInputValues);
