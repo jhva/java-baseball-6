@@ -5,6 +5,7 @@ import static baseball.constants.BaseBallGameNumber.CHECK_STRIKE_MAX;
 import static baseball.constants.BaseBallMessage.CHECK_GAME_EXIT_NUMBER;
 import static baseball.constants.BaseBallMessage.GAME_START;
 
+import baseball.utils.InputView;
 import baseball.utils.MessageUtils;
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package baseball.entity;
+package baseball.utils;
 
 
 import static baseball.constants.BaseBallGameNumber.USER_MAX_SIZE;

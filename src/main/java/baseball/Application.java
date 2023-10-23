@@ -2,7 +2,7 @@ package baseball;
 
 
 import baseball.entity.BaseBallGame;
-import baseball.entity.InputView;
+import baseball.utils.InputView;
 
 public class Application {
 
