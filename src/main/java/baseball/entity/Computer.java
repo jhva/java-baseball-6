@@ -15,7 +15,6 @@ public class Computer {
     public void randomGenerator() {
 
         generateRandomComputerValue = new ArrayList<>();
-
         while (generateRandomComputerValue.size() < RANDOM_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_RANGE_START_NUMBER, RANDOM_RANGE_FINAL_NUMBER);
             findDuplicatesRandomValue(randomNumber);
@@ -36,20 +35,16 @@ public class Computer {
             int userInputValue = userInputValues.get(i);
             int computerValue = generateRandomComputerValue.get(i);
             strike += countUserValueInComputerRandomStrike(computerValue, userInputValue);
-            ball += countUserValueInComputerRandomBall(userInputValue, userInputSize, i);
+            ball += countUserValueInComputerRandomBall(userInputValue, computerValue);
         }
         return new int[]{ball, strike};
     }
 
-    private int countUserValueInComputerRandomBall(int userInputValue, int len, int i) {
+    private int countUserValueInComputerRandomBall(int userInputValue, int computerValue) {
         int ball = 0;
-        for (int j = i + 1; j < len; j++) {
-            int computerValue = generateRandomComputerValue.get(j);
-            if (userInputValue == computerValue) {
-                ball++;
-            }
+        if (generateRandomComputerValue.contains(userInputValue) && userInputValue != computerValue) {
+            ball++;
         }
-
         return ball;
     }
 
