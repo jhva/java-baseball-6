@@ -1,27 +1,17 @@
 package baseball.utils;
 
+import static baseball.constants.BaseBallGameNumber.CHECK_BALL_MIN;
+import static baseball.constants.BaseBallGameNumber.CHECK_STRIKE_MAX;
+import static baseball.constants.BaseBallGameNumber.CHECK_STRIKE_MIN;
+import static baseball.constants.BaseBallGameNumber.NOTHING_BALL;
+import static baseball.constants.BaseBallGameNumber.USER_SCORE_BALL_FIX_INDEX;
+import static baseball.constants.BaseBallGameNumber.USER_SCORE_STRIKE_FIX_INDEX;
+import static baseball.constants.BaseBallMessage.COMMON_MATCHES_MSG;
+import static baseball.constants.BaseBallMessage.GAME_EXIT;
+import static baseball.constants.BaseBallMessage.NOTHING_BASEBALL;
+import static baseball.constants.BaseBallMessage.RESTART_BASEBALL_GAME;
+
 public class MessageUtils {
-
-    public static final String GAME_START = "숫자 야구 게임을 시작합니다. ";
-    public static final String PLEASE_ASK_NUMBER = "숫자를 입력해주세요 : ";
-    public static final String GAME_EXIT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART_BASEBALL_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String NOTHING_BASEBALL = "낫싱";
-    public static final String COMMON_MATCHES_MSG = "%d볼 %d스트라이크";
-    public static final String CHECK_GAME_EXIT_NUMBER = "2";
-
-
-    public static final int CHECK_STRIKE_MAX = 3;
-    public static final int CHECK_GAME_CONTINUE_NUMBER = 1;
-    public static final int CHECK_STRIKE_MIN = 1;
-    public static final int CHECK_BALL_MIN = 1;
-    public static final int RANDOM_RANGE_START_NUMBER = 1;
-    public static final int RANDOM_RANGE_FINAL_NUMBER = 9;
-    public static final int RANDOM_SIZE = 3;
-    public static final int USER_SCORE_BALL_FIX_INDEX = 0;
-    public static final int USER_SCORE_STRIKE_FIX_INDEX = 1;
-    public static final int USER_MAX_SIZE = 3;
-    public static final int NOTHING_BALL = 0;
 
     public static void commonFormatter(int[] userScore) {
         int ball = userScore[0];

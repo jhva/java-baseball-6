@@ -1,8 +1,9 @@
 package baseball.entity;
 
-import static baseball.utils.MessageUtils.RANDOM_RANGE_FINAL_NUMBER;
-import static baseball.utils.MessageUtils.RANDOM_RANGE_START_NUMBER;
-import static baseball.utils.MessageUtils.RANDOM_SIZE;
+
+import static baseball.constants.BaseBallGameNumber.RANDOM_RANGE_FINAL_NUMBER;
+import static baseball.constants.BaseBallGameNumber.RANDOM_RANGE_START_NUMBER;
+import static baseball.constants.BaseBallGameNumber.RANDOM_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

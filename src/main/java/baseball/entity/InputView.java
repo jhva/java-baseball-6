@@ -1,10 +1,11 @@
 package baseball.entity;
 
+
+import static baseball.constants.BaseBallGameNumber.USER_MAX_SIZE;
+import static baseball.constants.BaseBallMessage.PLEASE_ASK_NUMBER;
 import static baseball.exception.ErrorMsg.ERROR_USER_INPUT_DUPLICATE_VALUE;
 import static baseball.exception.ErrorMsg.ERROR_USER_INPUT_NOT_NUMERIC_VALUE;
 import static baseball.exception.ErrorMsg.ERROR_USER_INPUT_SIZE_VALUE;
-import static baseball.utils.MessageUtils.PLEASE_ASK_NUMBER;
-import static baseball.utils.MessageUtils.USER_MAX_SIZE;
 
 import baseball.exception.UserInputException;
 import camp.nextstep.edu.missionutils.Console;
